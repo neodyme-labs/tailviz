@@ -246,7 +246,12 @@ func main() {
 				}
 			}
 
-			format := graphviz.Format(filepath.Ext(outputPath)[1:])
+			extension := filepath.Ext(outputPath)
+			if len(extension) <= 1 {
+				return errors.New("Invalid output path specified")
+			}
+
+			format := graphviz.Format(extension[1:])
 			var buf bytes.Buffer
 			if err := g.Render(graph, format, &buf); err != nil {
 				return err
