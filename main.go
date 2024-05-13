@@ -162,6 +162,10 @@ func main() {
 				nodeNames = slices.Concat(nodeNames, members)
 			}
 
+			for _, host := range aclDetails.Hosts {
+				nodeNames = append(nodeNames, host)
+			}
+
 			for _, acl := range aclDetails.ACLs {
 				for _, n := range slices.Concat(acl.Src, acl.Dst, acl.Users, acl.Ports) {
 					res, err := matchName(n, nodeNames, false)
