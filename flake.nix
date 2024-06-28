@@ -26,5 +26,12 @@
           '';
         };
 
+        packages.default = pkgs.buildGoModule rec {
+          name = "tailviz";
+
+          src = ./.;
+
+          vendorHash = "sha256-DwS65ZRup31oujV2o3N6rM11QLNcbw8QU3vf0+wuXCc=";
+        };
       });
 }
